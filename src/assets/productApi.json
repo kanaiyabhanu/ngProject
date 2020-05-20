@@ -1,0 +1,47 @@
+[
+  {
+    "productId": 1,
+    "product": "Leaf Rake",
+    "code": "GDN-0011",
+    "available": "Mar 19,2016",
+    "price": 25,
+    "rating": 5,
+    "productImage": "http://lorempixel.com/400/200/"
+  },
+  {
+    "productId": 2,
+    "product": "Garden Cart",
+    "code": "GDN-0021",
+    "available": "April 19,2016",
+    "price": 25,
+    "rating": 4,
+    "productImage": "http://lorempixel.com/400/200/"
+  },
+  {
+    "productId": 3,
+    "product": "Hammer",
+    "code": "GDN-0041",
+    "available": "Mar 19,2016",
+    "price": 25,
+    "rating": 3.5,
+    "productImage": "http://lorempixel.com/400/200/"
+  },
+  {
+    "productId": 4,
+    "product": "Saw",
+    "code": "GDN-0011",
+    "available": "Mar 19,2016",
+    "price": 25,
+    "rating": 4.1,
+    "productImage": "http://lorempixel.com/400/200/"
+  },
+  {
+    "productId": 5,
+    "product": "Video Game Controller",
+    "code": "GDN-0025",
+    "available": "Mar 19,2016",
+    "price": 25,
+    "rating": 4.2,
+    "productImage": "http://lorempixel.com/400/200/"
+  }
+]
