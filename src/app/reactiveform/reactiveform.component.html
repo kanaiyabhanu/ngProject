@@ -1,0 +1,149 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <form [formGroup]="userForm" (ngSubmit)="Save(userForm.value)">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="enter FirstName"
+            formControlName="FirstName"
+            [class.is-valid]="userForm.get('FirstName').valid"
+            [class.is-invalid]="!userForm.get('FirstName').valid && submitted"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="userForm.get('FirstName').hasError('required') && submitted"
+          >
+            firstname is required*
+          </div>
+
+          <div
+            class="alert alert-danger"
+            *ngIf="userForm.get('FirstName').hasError('minlength') && submitted"
+          >
+            Firstname must be a 5 characters*
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="enter LastName"
+            formControlName="LastName"
+            [class.is-valid]="userForm.get('LastName').valid"
+            [class.is-invalid]="!userForm.get('LastName').valid && submitted"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="userForm.get('LastName').hasError('required') && submitted"
+          >
+            LastName is required*
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-control"
+            placeholder="enter emailid"
+            formControlName="EmailId"
+            [class.is-valid]="userForm.get('EmailId').valid"
+            [class.is-invalid]="!userForm.get('EmailId').valid && submitted"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="userForm.get('EmailId').hasError('required') && submitted"
+          >
+            EmailId is required*
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="enter MobileNo"
+            formControlName="MobileNo"
+            [class.is-valid]="userForm.get('MobileNo').valid"
+            [class.is-invalid]="!userForm.get('MobileNo').valid && submitted"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="userForm.get('MobileNo').hasError('required') && submitted"
+          >
+            MobileNo is required*
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="enter address"
+            formControlName="Address"
+            [class.is-valid]="userForm.get('Address').valid"
+            [class.is-invalid]="!userForm.get('Address').valid && submitted"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="userForm.get('Address').hasError('required') && submitted"
+          >
+            address is required*
+          </div>
+        </div>
+
+        <div formGroupName="UserLogin">
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="enter UserName"
+              formControlName="UserName"
+              [class.is-valid]="userForm.get('UserLogin').get('UserName').valid"
+              [class.is-invalid]="
+                !userForm.get('UserLogin').get('UserName').valid && submitted
+              "
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                userForm
+                  .get('UserLogin')
+                  .get('UserName')
+                  .hasError('required') && submitted
+              "
+            >
+              UserName is required*
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="enter password"
+              formControlName="Password"
+              [class.is-valid]="userForm.get('UserLogin').get('Password').valid"
+              [class.is-invalid]="
+                !userForm.get('UserLogin').get('Password').valid && submitted
+              "
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                userForm
+                  .get('UserLogin')
+                  .get('Password')
+                  .hasError('required') && submitted
+              "
+            >
+              Password is required*
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-danger bt-md">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

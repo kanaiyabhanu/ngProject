@@ -10,7 +10,10 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { ProductComponent } from './product/product.component';
 import { SearchPipe } from './search.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RatingComponent } from './rating.component';
+import { TemplateComponent } from './template/template.component';
+import { ReactiveformComponent } from './reactiveform/reactiveform.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,12 +23,16 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     ProductComponent,
     SearchPipe,
+    RatingComponent,
+    TemplateComponent,
+    ReactiveformComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

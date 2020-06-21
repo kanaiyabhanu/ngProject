@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Iregister } from '../model/reactive.user';
 
 @Injectable({ providedIn: 'root' })
 export class PostServices {
   private PRODUCTS_ENDPOINT = '../../assets/productApi.json';
+  private REGISTER_ENDPOINT =
+    'http://mobile.test.acorsociety.com/ideators/api/users/userregistrationasync';
   public consumeData;
   public fetchData;
-  constructor(private http: HttpClient) {}
+  public headers: HttpHeaders;
+  constructor(private http: HttpClient) {
+    this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  }
   fetchProduct() {
     return this.http.get(this.PRODUCTS_ENDPOINT);
   }
@@ -22,7 +28,23 @@ export class PostServices {
     // console.log(this.fetchData);
     return this.fetchData;
   }
+
+  createUser(data: Iregister) {
+    return this.http.post(this.REGISTER_ENDPOINT, JSON.stringify(data), {
+      headers: this.headers,
+    });
+  }
 }
+
+// Address: "thane"
+// EmailId: "kbhanu@gmail.com"
+// FirstName: "kan"
+// LastName: "bhanu"
+// MobileNo: 1234
+// UserLogin:
+// Password: "k123"
+// UserName: "kb123"
+
 //new method in svs
 //consume same api
 //pass parameter from component to svs

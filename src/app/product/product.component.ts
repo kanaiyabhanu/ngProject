@@ -25,7 +25,7 @@ export class ProductComponent implements OnInit {
     });
 
     this.productData = this.postServices.consumeApi(this.linkId);
-
+    alert(this.productData);
     // console.log(this.linkId)
     // console.log(this.postServices.consumeApi());
     // this.postServiceData.fetchProduct().subscribe((data) => {
