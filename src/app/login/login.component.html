@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <form [formGroup]="userLoginForm" (ngSubmit)="Save(userLoginForm.value)">
+        <h3 class="alert alert-danger" *ngIf="errorlogin">
+          {{ errormessage }}
+        </h3>
+        <h3 class="alert alert-success" *ngIf="loginmessage">
+          Successfully Logged In
+        </h3>
+
+        <div formGroupName="UserLogin">
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="enter UserName"
+              formControlName="UserName"
+              [class.is-valid]="
+                userLoginForm.get('UserLogin').get('UserName').valid
+              "
+              [class.is-invalid]="
+                !userLoginForm.get('UserLogin').get('UserName').valid &&
+                submitted
+              "
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                userLoginForm
+                  .get('UserLogin')
+                  .get('UserName')
+                  .hasError('required') && submitted
+              "
+            >
+              UserName is required*
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="enter password"
+              formControlName="Password"
+              [class.is-valid]="
+                userLoginForm.get('UserLogin').get('Password').valid
+              "
+              [class.is-invalid]="
+                !userLoginForm.get('UserLogin').get('Password').valid &&
+                submitted
+              "
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                userLoginForm
+                  .get('UserLogin')
+                  .get('Password')
+                  .hasError('required') && submitted
+              "
+            >
+              Password is required*
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-danger bt-md">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

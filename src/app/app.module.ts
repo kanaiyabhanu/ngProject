@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RatingComponent } from './rating.component';
 import { TemplateComponent } from './template/template.component';
 import { ReactiveformComponent } from './reactiveform/reactiveform.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { ReactiveformComponent } from './reactiveform/reactiveform.component';
     RatingComponent,
     TemplateComponent,
     ReactiveformComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

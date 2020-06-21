@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Iregister } from '../model/reactive.user';
+import { Iregister, Ilogin } from '../model/reactive.user';
 
 @Injectable({ providedIn: 'root' })
 export class PostServices {
   private PRODUCTS_ENDPOINT = '../../assets/productApi.json';
   private REGISTER_ENDPOINT =
     'http://mobile.test.acorsociety.com/ideators/api/users/userregistrationasync';
+  private LOGIN_ENDPOINT =
+    'http://mobile.test.acorsociety.com/ideators/api/users/userloginasync';
   public consumeData;
   public fetchData;
   public headers: HttpHeaders;
@@ -31,6 +33,12 @@ export class PostServices {
 
   createUser(data: Iregister) {
     return this.http.post(this.REGISTER_ENDPOINT, JSON.stringify(data), {
+      headers: this.headers,
+    });
+  }
+
+  userLogin(data: Ilogin) {
+    return this.http.post(this.LOGIN_ENDPOINT, JSON.stringify(data), {
       headers: this.headers,
     });
   }
