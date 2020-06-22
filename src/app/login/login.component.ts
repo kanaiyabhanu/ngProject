@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Ilogin } from '../model/reactive.user';
 import { PostServices } from '../services/post.services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,11 @@ export class LoginComponent implements OnInit {
   public errormessage: string;
   public loginmessage: boolean = false;
   public errorlogin: boolean = false;
-  constructor(private fb: FormBuilder, private postService: PostServices) {}
+  constructor(
+    private fb: FormBuilder,
+    private postService: PostServices,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.userLoginForm = this.fb.group({
@@ -35,7 +40,9 @@ export class LoginComponent implements OnInit {
       if (item.UserIdentity) {
         this.loginmessage = true;
         this.errorlogin = false;
+        alert('Logged In');
         console.log(item);
+        this.router.navigateByUrl('/home');
       } else {
         this.loginmessage = false;
         this.errorlogin = true;

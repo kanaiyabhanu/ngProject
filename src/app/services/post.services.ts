@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Iregister, Ilogin } from '../model/reactive.user';
-
+import { map } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class PostServices {
   private PRODUCTS_ENDPOINT = '../../assets/productApi.json';
@@ -38,9 +38,21 @@ export class PostServices {
   }
 
   userLogin(data: Ilogin) {
-    return this.http.post(this.LOGIN_ENDPOINT, JSON.stringify(data), {
-      headers: this.headers,
-    });
+    return (
+      this.http
+        .post(this.LOGIN_ENDPOINT, JSON.stringify(data), {
+          headers: this.headers,
+        })
+        //performing pipes operation on the data that will return from the above
+        .pipe(
+          map((data: any) => {
+            if (data && data.UserLogin) {
+              localStorage.setItem('currentuser', JSON.stringify(data));
+            }
+            return data;
+          })
+        )
+    );
   }
 }
 

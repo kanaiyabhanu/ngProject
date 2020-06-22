@@ -21,11 +21,14 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.ar.params.subscribe((data) => {
       let id = data['id'];
+      console.log(id);
       this.linkId = id;
     });
 
     this.productData = this.postServices.consumeApi(this.linkId);
+
     alert(this.productData);
+
     // console.log(this.linkId)
     // console.log(this.postServices.consumeApi());
     // this.postServiceData.fetchProduct().subscribe((data) => {
