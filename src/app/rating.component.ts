@@ -11,9 +11,9 @@ export class RatingComponent {
   public round;
   public numbers;
   constructor() {
-    console.log(this.starValue);
+    // console.log(this.starValue);
     this.round = Math.round(this.starValue);
-    console.log(this.round);
+    // console.log(this.round);
     this.numbers = Array(5)
       .fill(0)
       .map((x, i) => i);

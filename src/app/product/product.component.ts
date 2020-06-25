@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostServices } from '../services/post.services';
-
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -20,15 +21,20 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.ar.params.subscribe((data) => {
-      let id = data['id'];
-      console.log(id);
+      let id: number = data['id'];
       this.linkId = id;
     });
+    console.log(this.linkId);
+    this.postServices.fetchProduct().subscribe((data: any[]) => {
+      let item: any[] = data;
+      this.productData = item;
 
-    this.productData = this.postServices.consumeApi(this.linkId);
-
-    alert(this.productData);
-
+      // data.map((value) => {
+      //   if (value.productId == parseInt(this.linkId)) this.fetchData = value;
+      // });
+    });
+    console.log(this.productData);
+    // this.productData = this.postServices.consumeApi(id);
     // console.log(this.linkId)
     // console.log(this.postServices.consumeApi());
     // this.postServiceData.fetchProduct().subscribe((data) => {
